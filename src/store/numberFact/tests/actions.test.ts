@@ -6,6 +6,7 @@ import {
   appLoading,
   appDoneLoading,
   // showMessageWithTimeout,
+  setMessage,
 } from '../../appState/actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -44,6 +45,7 @@ describe('#fetchFact', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(appLoading());
     expect(dispatch).toHaveBeenCalledWith(factFetched(fact));
+    expect(dispatch).toHaveBeenCalledWith(setMessage(fact));
     expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
     expect(dispatch).toHaveBeenCalledTimes(4);
   });
