@@ -1,13 +1,13 @@
-import { FACT_FETCHED, StoreNumber, StoreState } from './types';
+import { FACT_FETCHED, StoreNumber, FactState } from './types';
 
-const initialState: StoreState = {
-  fact: undefined,
+const initialState: FactState = {
+  fact: null,
 };
 
 export default (state = initialState, action: StoreNumber) => {
   switch (action.type) {
     case FACT_FETCHED:
-      return { fact: action.fact };
+      return { ...state, fact: action.fact };
 
     default:
       return state;

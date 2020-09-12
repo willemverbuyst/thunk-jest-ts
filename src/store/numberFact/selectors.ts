@@ -1,3 +1,3 @@
 export const selectFact = (state: any) => {
-  return state.numberFactReducer.fact;
+  return state.numberFact.fact;
 };
