@@ -61,7 +61,7 @@ describe('appState', () => {
       const text = 'test_text';
       const timeOutMilliSeconds = 1000;
       const dispatch = jest.fn();
-      showMessageWithTimeout(text, timeOutMilliSeconds)(dispatch);
+      showMessageWithTimeout(dispatch, text, timeOutMilliSeconds);
       expect(dispatch).toHaveBeenCalledWith(setMessage(text));
       expect(dispatch).toHaveBeenCalledTimes(1);
     });
