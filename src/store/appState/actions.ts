@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+
 import {
   APP_LOADING,
   APP_DONE_LOADING,
@@ -30,12 +31,10 @@ export const setMessage = (text: string): SetMessage => {
 export const showMessageWithTimeout = (
   text: string,
   timeOutMilliSeconds: number
-) => {
-  return (dispatch: Dispatch) => {
-    dispatch(setMessage(text));
+) => (dispatch: Dispatch) => {
+  dispatch(setMessage(text));
 
-    const timeout = timeOutMilliSeconds || DEFAULT_MESSAGE_TIMEOUT;
+  const timeout = timeOutMilliSeconds || DEFAULT_MESSAGE_TIMEOUT;
 
-    setTimeout(() => dispatch(clearMessage()), timeout);
-  };
+  setTimeout(() => dispatch(clearMessage()), timeout);
 };
