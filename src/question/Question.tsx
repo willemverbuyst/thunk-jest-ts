@@ -1,22 +1,16 @@
 import React, { FormEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
-import axios from 'axios';
+import { fetchFact } from '../store/numberFact/actions';
 
 export default function Question() {
+  const dispatch = useDispatch();
   const [inputNumber, setinputNumber] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent<HTMLElement>): void => {
     e.preventDefault();
     console.log('What is the random number? ' + inputNumber);
-    fetchNumberFact(inputNumber);
-  };
-
-  const fetchNumberFact = async (num: number): Promise<void> => {
-    const response = await axios.get(`http://numbersapi.com/${num}/trivia`);
-
-    const fact = response.data;
-
-    console.log(fact);
+    dispatch(fetchFact(inputNumber));
   };
 
   return (

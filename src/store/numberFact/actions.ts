@@ -14,10 +14,12 @@ export const fetchFact = (num: number) => async (
   dispatch: Dispatch,
   _getState: GetState
 ) => {
+  console.log(num);
   try {
     const response = await axios.get(`http://numbersapi.com/${num}/trivia`);
 
     const fact = response.data;
+    console.log(fact);
     dispatch(factFetched(num, fact));
   } catch (error) {
     console.log(error);
