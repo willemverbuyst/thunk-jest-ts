@@ -5,11 +5,10 @@ import { fetchFact } from '../store/numberFact/actions';
 
 export default function Question() {
   const dispatch = useDispatch();
-  const [inputNumber, setinputNumber] = useState<number>(0);
+  const [inputNumber, setInputNumber] = useState<number>(0);
 
   const handleSubmit = (e: FormEvent<HTMLElement>): void => {
     e.preventDefault();
-    console.log('What is the random number? ' + inputNumber);
     dispatch(fetchFact(inputNumber));
   };
 
@@ -23,7 +22,7 @@ export default function Question() {
               <Form.Control
                 type="number"
                 value={inputNumber}
-                onChange={(e) => setinputNumber(+e.target.value)}
+                onChange={(e) => setInputNumber(+e.target.value)}
               />
               <Form.Text className="text-muted">
                 Enter a number, and you will get a random fact.

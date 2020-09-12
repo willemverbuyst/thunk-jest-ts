@@ -1,5 +1,3 @@
-import { State } from './types';
-
-export const selectFact = (state: State) => {
-  return state.data.fact;
+export const selectFact = (state: any) => {
+  return state.numberFactReducer.fact;
 };
