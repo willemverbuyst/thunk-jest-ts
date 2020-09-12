@@ -17,6 +17,8 @@ const factFetched = (fact: string): StoreNumber => {
   };
 };
 
+// https://bloggie.io/@_ChristineOo/understanding-typings-of-redux-thunk-action
+
 export const fetchFact = (
   num: number
 ): ThunkAction<void, GetState, unknown, Action<string>> => async (dispatch) => {
