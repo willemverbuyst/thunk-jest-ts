@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectFact } from '../store/numberFact/selectors';
+import { selectMessage } from '../store/appState/selectors';
 import { Alert } from 'react-bootstrap';
 
 export default function AlertElement() {
-  const fact = useSelector(selectFact);
+  const fact = useSelector(selectMessage);
+
   const variant = 'success';
 
   if (!fact) return null;

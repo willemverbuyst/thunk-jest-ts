@@ -5,14 +5,10 @@ export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 
 export type AppState = {
   loading: boolean;
-  message: Message | null;
+  message: string | null;
 };
 
 export type GetState = () => AppState;
-
-export type Message = {
-  text: string;
-};
 
 export type AppLoading = {
   type: typeof APP_LOADING;
@@ -28,7 +24,7 @@ export type ClearMessage = {
 
 export type SetMessage = {
   type: typeof SET_MESSAGE;
-  payload: Message;
+  payload: string;
 };
 
 export type AppStateTypes =

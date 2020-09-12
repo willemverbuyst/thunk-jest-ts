@@ -10,7 +10,7 @@ import {
   SetMessage,
 } from './types';
 
-const DEFAULT_MESSAGE_TIMEOUT = 1000;
+const DEFAULT_MESSAGE_TIMEOUT = 2000;
 
 export const appLoading = (): AppLoading => ({ type: APP_LOADING });
 
@@ -23,9 +23,7 @@ export const clearMessage = (): ClearMessage => ({ type: CLEAR_MESSAGE });
 export const setMessage = (text: string): SetMessage => {
   return {
     type: SET_MESSAGE,
-    payload: {
-      text,
-    },
+    payload: text,
   };
 };
 
