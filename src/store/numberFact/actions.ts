@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import { Dispatch } from 'redux';
-import { FACT_FETCHED, GetState, StoreNumber } from './types';
+import { FACT_FETCHED, StoreNumber } from './types';
+import { GetState } from '../types';
 
 const factFetched = (fact: string): StoreNumber => {
   return {

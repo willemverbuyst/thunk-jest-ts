@@ -1,3 +1,5 @@
-export const selectAppLoading = (state: any) => state.appState.loading;
+import { StoreState } from '../types';
 
-export const selectMessage = (state: any) => state.appState.message;
+export const selectAppLoading = (state: StoreState) => state.appState.loading;
+
+export const selectMessage = (state: StoreState) => state.appState.message;
