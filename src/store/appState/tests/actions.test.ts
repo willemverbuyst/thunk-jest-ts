@@ -21,7 +21,7 @@ describe('#appState', () => {
       type: ActionType.CLEAR_MESSAGE,
     };
 
-    test('returns an anction w/ type SET_MESSAGE and payload sevirity and text', () => {
+    test('returns an anction w/ type CLEr_MESSAGE and no payload', () => {
       expect(clearMessage()).toEqual(expected);
       expect(clearMessage().type).toEqual(ActionType.CLEAR_MESSAGE);
       expect(clearMessage()).not.toHaveProperty('payload');

@@ -54,7 +54,7 @@ describe('#appStateReducer', () => {
     });
   });
 
-  describe('w/ initial state and CLEAR_MESSAGE action', () => {
+  describe('w/ a state and CLEAR_MESSAGE action', () => {
     const initialState: IAppState = {
       loading: false,
       message: null,
@@ -68,7 +68,7 @@ describe('#appStateReducer', () => {
     };
     const newState: IAppState = reducer(state, action);
 
-    test('returns a state', () => {
+    test('returns the initial state', () => {
       expect(newState).toEqual(initialState);
       expect(newState.message).toBeNull;
       expect(newState.loading).toBe(false);
