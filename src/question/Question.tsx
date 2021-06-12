@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
-import { fetchFact } from '../store/numberFact/actions';
+import { fetchFact } from '../store/factState/actions';
 
 export default function Question() {
   const dispatch = useDispatch();

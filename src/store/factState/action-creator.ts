@@ -1,36 +1,28 @@
 import axios from 'axios';
+import { Dispatch } from 'redux';
 import { Action } from 'redux';
-
-import { FACT_FETCHED, StoreNumber } from './types';
-import { GetState } from '../types';
-import {
-  appLoading,
-  appDoneLoading,
-  showMessageWithTimeout,
-} from '../appState/actions';
 import { ThunkAction } from 'redux-thunk';
-
-export const factFetched = (fact: string): StoreNumber => {
-  return {
-    type: FACT_FETCHED,
-    fact,
-  };
-};
+import { showMessageWithTimeout } from '../appState/action-creators';
+import { AppStateActions } from '../appState/action-types';
+import { appLoading, appDoneLoading } from '../appState/actions';
+import { GetState } from '../types';
+import { FactStateActions } from './action-types';
+import { factFetched } from './actions';
 
 // https://bloggie.io/@_ChristineOo/understanding-typings-of-redux-thunk-action
 // https://medium.com/@talkol/redux-thunks-dispatching-other-thunks-discussion-and-best-practices-dd6c2b695ecf
 
 export const fetchFact =
   (num: number): ThunkAction<void, GetState, null, Action<string>> =>
-  async (dispatch) => {
+  async (dispatch: Dispatch<AppStateActions | FactStateActions>) => {
     dispatch(appLoading());
     try {
       const response = await axios.get(`http://numbersapi.com/${num}/trivia`);
 
       const fact = response.data;
       showMessageWithTimeout(dispatch, fact, 2500);
-      dispatch(factFetched(fact));
 
+      dispatch(factFetched(fact));
       dispatch(appDoneLoading());
     } catch (error) {
       console.log(error);

@@ -1,8 +1,8 @@
 import { IAppState } from './appState/reducer';
-import { FactState } from './numberFact/types';
+import { IFactState } from './factState/reducer';
 
 export type StoreState = {
-  numberFact: FactState;
+  numberFact: IFactState;
   appState: IAppState;
 };
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { fetchFact, factFetched } from '../actions';
 
-import { FACT_FETCHED, StoreNumber } from '../types';
+import { FACT_FETCHED, StoreNumber } from '../action-types';
 import {
   appLoading,
   appDoneLoading,

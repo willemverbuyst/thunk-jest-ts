@@ -10,7 +10,7 @@ const initialState: IAppState = {
   message: null,
 };
 
-const AppStateReducer = (state = initialState, action: AppStateActions) => {
+const appStateReducer = (state = initialState, action: AppStateActions) => {
   switch (action.type) {
     case ActionType.APP_LOADING:
       return { ...state, loading: true };
@@ -29,4 +29,4 @@ const AppStateReducer = (state = initialState, action: AppStateActions) => {
   }
 };
 
-export default AppStateReducer;
+export default appStateReducer;
