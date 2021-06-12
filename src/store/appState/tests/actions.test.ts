@@ -1,58 +1,52 @@
-import { APP_DONE_LOADING, APP_LOADING, CLEAR_MESSAGE, SET_MESSAGE } from '../action-types';
-import { appDoneLoading, appLoading, clearMessage, setMessage, showMessageWithTimeout } from '../actions';
+import { ActionType, AppDoneLoading, AppLoading, ClearMessage, SetMessage } from '../action-types';
+import { appDoneLoading, appLoading, clearMessage, setMessage } from '../actions';
 
-describe('appState', () => {
+describe('#appState', () => {
   describe('#setMessage', () => {
     const text = 'test_text';
-    const expected = {
-      type: SET_MESSAGE,
+    const expected: SetMessage = {
+      type: ActionType.SET_MESSAGE,
       payload: text,
     };
-    test('should return an object containing type SET_MESSAGE and as payload the text', () => {
+
+    test('returns an anction w/ type SET_MESSAGE and payload sevirity and text', () => {
       expect(setMessage(text)).toEqual(expected);
-      expect(setMessage(text).type).toBe(expected.type);
+      expect(setMessage(text).type).toEqual(ActionType.SET_MESSAGE);
       expect(setMessage(text).payload).toEqual(expected.payload);
-      expect(clearMessage().type).not.toBeNull();
     });
   });
+
   describe('#clearMessage', () => {
-    const expected = {
-      type: CLEAR_MESSAGE,
+    const expected: ClearMessage = {
+      type: ActionType.CLEAR_MESSAGE,
     };
-    test('should return an action object with type #CLEAR_MESSAGE and no payload', () => {
+
+    test('returns an anction w/ type SET_MESSAGE and payload sevirity and text', () => {
       expect(clearMessage()).toEqual(expected);
-      expect(clearMessage().type).toBe(expected.type);
-      expect(clearMessage().type).not.toBeUndefined();
+      expect(clearMessage().type).toEqual(ActionType.CLEAR_MESSAGE);
+      expect(clearMessage()).not.toHaveProperty('payload');
     });
   });
+
   describe('#appLoading', () => {
-    const expected = {
-      type: APP_LOADING,
+    const expected: AppLoading = {
+      type: ActionType.APP_LOADING,
     };
-    test('should return an action type #APP_LOADING', () => {
+    test('returns an action w/ type APP_LOADING and no payload', () => {
       expect(appLoading()).toEqual(expected);
-      expect(appLoading().type).toBe(expected.type);
-      expect(appLoading().type).not.toBeUndefined();
+      expect(appLoading().type).toEqual(ActionType.APP_LOADING);
+      expect(appLoading()).not.toHaveProperty('payload');
     });
   });
-  describe('#appDoneLoading ', () => {
-    const expected = {
-      type: APP_DONE_LOADING,
+
+  describe('#appDoneLoading', () => {
+    const expected: AppDoneLoading = {
+      type: ActionType.APP_DONE_LOADING,
     };
-    test('should return an action type #APP_DONE_LOADING', () => {
+    test('returns an action w/ type APP_DONE_LOADING and no payload', () => {
       expect(appDoneLoading()).toEqual(expected);
-      expect(appDoneLoading().type).toBe(expected.type);
-      expect(appDoneLoading().type).not.toBeUndefined();
-    });
-  });
-  describe('#showMessageWithTimeout', () => {
-    test('should dispatch an action set message', async () => {
-      const text = 'test_text';
-      const timeOutMilliSeconds = 1000;
-      const dispatch = jest.fn();
-      showMessageWithTimeout(dispatch, text, timeOutMilliSeconds);
-      expect(dispatch).toHaveBeenCalledWith(setMessage(text));
-      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(appDoneLoading().type).toEqual(ActionType.APP_DONE_LOADING);
+      expect(appDoneLoading()).not.toHaveProperty('payload');
     });
   });
 });
