@@ -1,85 +1,76 @@
-import {
-  APP_DONE_LOADING,
-  APP_LOADING,
-  AppDoneLoading,
-  AppLoading,
-  AppState,
-  CLEAR_MESSAGE,
-  ClearMessage,
-  SET_MESSAGE,
-  SetMessage,
-} from '../action-types';
-import reducer from '../reducer';
+import { ActionType, AppDoneLoading, AppLoading, ClearMessage, SetMessage } from '../action-types';
+import reducer, { IAppState } from '../reducer';
 
 describe('#appStateReducer', () => {
-  const initialState: AppState = {
-    loading: false,
-    message: null,
-  };
-  describe('if given no state and #APP_LOADING', () => {
-    test('returns the inital state', () => {
-      const newState: AppState = reducer(undefined, { type: APP_LOADING });
+  describe('w/ initial state and APP_LOADING action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const action: AppLoading = { type: ActionType.APP_LOADING };
+    const newState: IAppState = reducer(initialState, action);
+
+    test('returns a new state with loading set to true', () => {
       expect(newState).not.toEqual(initialState);
       expect(newState.loading).toBe(true);
-      expect(newState.message).toBeNull();
     });
   });
-  describe('when given #APP_LOADING action type', () => {
-    test('returns a new state with loading set to true', () => {
-      const action: AppLoading = { type: APP_LOADING };
-      const newState: AppState = reducer(initialState, action);
-      expect(newState).toEqual({ loading: true, message: null });
-      expect(newState.loading).toBe(true);
-    });
-  });
-  describe('if given no state and #APP_DONE_LOADING', () => {
-    test('returns the inital state', () => {
-      const newState: AppState = reducer(undefined, { type: APP_DONE_LOADING });
+
+  describe('w/ state and APP_DONE_LOADING action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const action: AppDoneLoading = { type: ActionType.APP_DONE_LOADING };
+    const newState: IAppState = reducer(initialState, action);
+
+    test('returns a new state with loading set to false', () => {
       expect(newState).toEqual(initialState);
       expect(newState.loading).toBe(false);
-      expect(newState.message).toBeNull();
     });
   });
-  describe('when given #APP_DONE_LOADING action type', () => {
-    test('returns a new state with loading set to false', () => {
-      const action: AppDoneLoading = { type: APP_DONE_LOADING };
-      const newState: AppState = reducer(initialState, action);
-      expect(newState).toEqual({ loading: false, message: null });
-      expect(newState.loading).toBe(false);
-    });
-  });
-  describe('when given a #SET_MESSAGE action type', () => {
-    test('returns a new state with the payload containing correct values', () => {
-      const text = 'test_message';
-      const action: SetMessage = {
-        type: SET_MESSAGE,
-        payload: text,
-      };
-      const newState: AppState = reducer(initialState, action);
+
+  describe('w/ initial state and SET_MESSAGE action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+
+    const text = 'test_message';
+    const action: SetMessage = {
+      type: ActionType.SET_MESSAGE,
+      payload: text,
+    };
+    const newState: IAppState = reducer(initialState, action);
+
+    test('returns a state', () => {
+      expect(newState).not.toEqual(initialState);
       expect(newState).toEqual({
         loading: false,
         message: action.payload,
       });
-      expect(newState.message).toBe(action.payload);
+      expect(newState.message).toEqual(action.payload);
       expect(newState.loading).toBe(false);
     });
   });
-  describe('when initialState given a #CLEAR_MESSAGE action type', () => {
-    test('returns a new state with the message set to null', () => {
-      const action: ClearMessage = { type: CLEAR_MESSAGE };
-      const newState: AppState = reducer(initialState, action);
-      expect(newState).toEqual({ loading: false, message: null });
-      expect(newState.message).toBeNull();
-      expect(newState.loading).toBe(false);
-    });
-  });
-  describe('when a state given a #CLEAR_MESSAGE action type', () => {
-    test('returns a new state with the message set to null', () => {
-      const state: AppState = { loading: false, message: 'test_message' };
-      const action: ClearMessage = { type: CLEAR_MESSAGE };
-      const newState: AppState = reducer(state, action);
-      expect(newState).toEqual({ loading: false, message: null });
-      expect(newState.message).toBeNull();
+
+  describe('w/ initial state and CLEAR_MESSAGE action', () => {
+    const initialState: IAppState = {
+      loading: false,
+      message: null,
+    };
+    const state: IAppState = {
+      loading: false,
+      message: 'test',
+    };
+    const action: ClearMessage = {
+      type: ActionType.CLEAR_MESSAGE,
+    };
+    const newState: IAppState = reducer(state, action);
+
+    test('returns a state', () => {
+      expect(newState).toEqual(initialState);
+      expect(newState.message).toBeNull;
       expect(newState.loading).toBe(false);
     });
   });
