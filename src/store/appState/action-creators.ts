@@ -1,12 +1,13 @@
 import { Dispatch } from 'redux';
+
 import { DEFAULT_MESSAGE_TIMEOUT } from '../../constants/message-timeout';
 import { AppStateActions } from './action-types';
-import { setMessage, clearMessage } from './actions';
+import { clearMessage, setMessage } from './actions';
 
 export const showMessageWithTimeout = (
   dispatch: Dispatch<AppStateActions>,
   text: string,
-  timeOutMilliSeconds: number
+  timeOutMilliSeconds: number,
 ): void => {
   dispatch(setMessage(text));
 

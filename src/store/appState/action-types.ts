@@ -22,8 +22,4 @@ export type SetMessage = {
   payload: string;
 };
 
-export type AppStateActions =
-  | AppLoading
-  | AppDoneLoading
-  | ClearMessage
-  | SetMessage;
+export type AppStateActions = AppLoading | AppDoneLoading | ClearMessage | SetMessage;

@@ -1,10 +1,4 @@
-import {
-  ActionType,
-  AppLoading,
-  AppDoneLoading,
-  ClearMessage,
-  SetMessage,
-} from './action-types';
+import { ActionType, AppDoneLoading, AppLoading, ClearMessage, SetMessage } from './action-types';
 
 export const appLoading = (): AppLoading => ({ type: ActionType.APP_LOADING });
 

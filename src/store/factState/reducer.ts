@@ -8,7 +8,7 @@ const initialState: IFactState = {
   fact: null,
 };
 
-const factStateReducer = (state = initialState, action: FactStateActions) => {
+const factStateReducer = (state = initialState, action: FactStateActions): IFactState => {
   switch (action.type) {
     case ActionType.FACT_FETCHED:
       return { ...state, fact: action.payload };

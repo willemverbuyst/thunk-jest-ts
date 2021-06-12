@@ -1,16 +1,5 @@
-import {
-  appLoading,
-  appDoneLoading,
-  clearMessage,
-  setMessage,
-  showMessageWithTimeout,
-} from '../actions';
-import {
-  APP_LOADING,
-  APP_DONE_LOADING,
-  SET_MESSAGE,
-  CLEAR_MESSAGE,
-} from '../action-types';
+import { APP_DONE_LOADING, APP_LOADING, CLEAR_MESSAGE, SET_MESSAGE } from '../action-types';
+import { appDoneLoading, appLoading, clearMessage, setMessage, showMessageWithTimeout } from '../actions';
 
 describe('appState', () => {
   describe('#setMessage', () => {

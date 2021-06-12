@@ -1,6 +1,7 @@
 import React, { FormEvent, ReactElement, useState } from 'react';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { Container, Form, Button, Row, Col } from 'react-bootstrap';
+
 import { fetchFact } from '../store/factState/action-creator';
 
 const Question: React.FC = (): ReactElement => {
@@ -24,9 +25,7 @@ const Question: React.FC = (): ReactElement => {
                 value={inputNumber}
                 onChange={(e) => setInputNumber(Number(e.target.value))}
               />
-              <Form.Text className="text-muted">
-                Enter a number, and you will get a random fact.
-              </Form.Text>
+              <Form.Text className="text-muted">Enter a number, and you will get a random fact.</Form.Text>
             </Form.Group>
 
             <Button variant="primary" type="submit">

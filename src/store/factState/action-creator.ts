@@ -2,9 +2,10 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
+
 import { showMessageWithTimeout } from '../appState/action-creators';
 import { AppStateActions } from '../appState/action-types';
-import { appLoading, appDoneLoading } from '../appState/actions';
+import { appDoneLoading, appLoading } from '../appState/actions';
 import { GetState } from '../types';
 import { FactStateActions } from './action-types';
 import { factFetched } from './actions';
