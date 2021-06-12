@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { Dispatch } from 'redux';
 import { Action } from 'redux';
 import { ThunkAction } from 'redux-thunk';
@@ -18,7 +18,7 @@ export const fetchFact =
   async (dispatch: Dispatch<AppStateActions | FactStateActions>) => {
     dispatch(appLoading());
     try {
-      const response = await axios.get(`http://numbersapi.com/${num}/trivia`);
+      const response: AxiosResponse<string> = await axios.get<string>(`http://numbersapi.com/${num}/trivia`);
 
       const fact = response.data;
       showMessageWithTimeout(dispatch, fact, 2500);
