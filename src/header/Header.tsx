@@ -1,8 +1,9 @@
 import React from 'react';
+import { ReactElement } from 'react';
 
 import { Navbar } from 'react-bootstrap';
 
-export default function Header() {
+export const Header: React.FC = (): ReactElement => {
   return (
     <Navbar bg="light">
       <Navbar.Brand href="#home">
@@ -10,4 +11,4 @@ export default function Header() {
       </Navbar.Brand>
     </Navbar>
   );
-}
+};
