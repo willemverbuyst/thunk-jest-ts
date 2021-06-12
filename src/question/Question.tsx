@@ -1,9 +1,9 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
-import { fetchFact } from '../store/factState/actions';
+import { fetchFact } from '../store/factState/action-creator';
 
-export default function Question() {
+export const Question: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const [inputNumber, setInputNumber] = useState<number>(0);
 
@@ -22,7 +22,7 @@ export default function Question() {
               <Form.Control
                 type="number"
                 value={inputNumber}
-                onChange={(e) => setInputNumber(+e.target.value)}
+                onChange={(e) => setInputNumber(Number(e.target.value))}
               />
               <Form.Text className="text-muted">
                 Enter a number, and you will get a random fact.
@@ -37,4 +37,4 @@ export default function Question() {
       </Row>
     </Container>
   );
-}
+};
