@@ -1,9 +1,10 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectMessage } from '../store/appState/selectors';
+import React, { ReactElement } from 'react';
 import { Alert } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
 
-export default function AlertElement() {
+import { selectMessage } from '../store/appState/selectors';
+
+const AlertElement: React.FC = (): ReactElement | null => {
   const fact = useSelector(selectMessage);
 
   const variant = 'success';
@@ -11,4 +12,6 @@ export default function AlertElement() {
   if (!fact) return null;
 
   return <Alert variant={variant}>{fact}</Alert>;
-}
+};
+
+export default AlertElement;

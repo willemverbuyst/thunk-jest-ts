@@ -1,15 +1,15 @@
-import reducer from '../reducer';
 import {
-  APP_LOADING,
   APP_DONE_LOADING,
-  SET_MESSAGE,
-  CLEAR_MESSAGE,
-  AppLoading,
+  APP_LOADING,
   AppDoneLoading,
-  ClearMessage,
-  SetMessage,
+  AppLoading,
   AppState,
-} from '../types';
+  CLEAR_MESSAGE,
+  ClearMessage,
+  SET_MESSAGE,
+  SetMessage,
+} from '../action-types';
+import reducer from '../reducer';
 
 describe('#appStateReducer', () => {
   const initialState: AppState = {

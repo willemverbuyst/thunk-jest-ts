@@ -1,32 +1,32 @@
-import {
-  APP_LOADING,
-  APP_DONE_LOADING,
-  SET_MESSAGE,
-  CLEAR_MESSAGE,
-  AppState,
-  AppStateTypes,
-} from './types';
+import { ActionType, AppStateActions } from './action-types';
 
-const initialState: AppState = {
+export interface IAppState {
+  loading: boolean;
+  message: string | null;
+}
+
+const initialState: IAppState = {
   loading: false,
   message: null,
 };
 
-export default (state = initialState, action: AppStateTypes) => {
+const appStateReducer = (state = initialState, action: AppStateActions): IAppState => {
   switch (action.type) {
-    case APP_LOADING:
+    case ActionType.APP_LOADING:
       return { ...state, loading: true };
 
-    case APP_DONE_LOADING:
+    case ActionType.APP_DONE_LOADING:
       return { ...state, loading: false };
 
-    case SET_MESSAGE:
+    case ActionType.SET_MESSAGE:
       return { ...state, message: action.payload };
 
-    case CLEAR_MESSAGE:
+    case ActionType.CLEAR_MESSAGE:
       return { ...state, message: null };
 
     default:
       return state;
   }
 };
+
+export default appStateReducer;

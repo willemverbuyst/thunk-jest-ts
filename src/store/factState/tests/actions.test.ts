@@ -1,13 +1,13 @@
 import axios from 'axios';
-import { fetchFact, factFetched } from '../actions';
 
-import { FACT_FETCHED, StoreNumber } from '../types';
 import {
-  appLoading,
   appDoneLoading,
+  appLoading,
   // showMessageWithTimeout,
   setMessage,
 } from '../../appState/actions';
+import { FACT_FETCHED, StoreNumber } from '../action-types';
+import { factFetched, fetchFact } from '../actions';
 
 const mockAxios = axios as jest.Mocked<typeof axios>;
 

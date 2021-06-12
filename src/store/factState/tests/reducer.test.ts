@@ -1,5 +1,5 @@
+import { FACT_FETCHED, FactState } from '../action-types';
 import reducer from '../reducer';
-import { FACT_FETCHED, FactState } from '../types';
 
 describe('#fetchFact', () => {
   const initialState: FactState = {

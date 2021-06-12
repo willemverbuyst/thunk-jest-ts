@@ -1,9 +1,10 @@
-import React from 'react';
-import Header from './header/Header';
+import React, { ReactElement } from 'react';
+
 import Alert from './alert/AlertElement';
+import Header from './header/Header';
 import Question from './question/Question';
 
-function App() {
+const App: React.FC = (): ReactElement => {
   return (
     <>
       <Header />
@@ -11,6 +12,6 @@ function App() {
       <Question />
     </>
   );
-}
+};
 
 export default App;

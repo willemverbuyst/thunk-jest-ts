@@ -1,9 +1,9 @@
-import { AppState } from './appState/types';
-import { FactState } from './numberFact/types';
+import { IAppState } from './appState/reducer';
+import { IFactState } from './factState/reducer';
 
 export type StoreState = {
-  numberFact: FactState;
-  appState: AppState;
+  numberFact: IFactState;
+  appState: IAppState;
 };
 
 export type GetState = () => StoreState;
