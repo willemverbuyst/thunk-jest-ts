@@ -1,52 +1,15 @@
-import axios from 'axios';
-
-import {
-  appDoneLoading,
-  appLoading,
-  // showMessageWithTimeout,
-  setMessage,
-} from '../../appState/actions';
-import { FACT_FETCHED, StoreNumber } from '../action-types';
-import { factFetched, fetchFact } from '../actions';
-
-const mockAxios = axios as jest.Mocked<typeof axios>;
-
-const fact = 'test_fact';
-
-beforeEach(() => {
-  jest.resetAllMocks();
-});
+import { ActionType, StoreNumber } from '../action-types';
+import { factFetched } from '../actions';
 
 describe('#factFetched', () => {
+  const fact = 'test_fact';
   const action: StoreNumber = {
-    type: FACT_FETCHED,
-    fact,
+    type: ActionType.FACT_FETCHED,
+    payload: fact,
   };
-  test('should return an object containing type FACT_FETCHED and as a payload the fact', () => {
+  test('should return an action w/ type FACT_FETCHED and a payload', () => {
     expect(factFetched(fact)).toEqual(action);
-    expect(factFetched(fact).type).toEqual(action.type);
-    expect(factFetched(fact).fact).toEqual(action.fact);
-    expect(factFetched(fact).fact).toEqual(fact);
-  });
-});
-
-describe('#fetchFact', () => {
-  it('calls axios and returns fact', async () => {
-    const dispatch = jest.fn();
-    const getState = jest.fn();
-    const extra = null;
-    const response = { data: fact };
-    const num = 1;
-
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve(response));
-
-    await fetchFact(num)(dispatch, getState, extra);
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(dispatch).toHaveBeenCalledWith(appLoading());
-    expect(dispatch).toHaveBeenCalledWith(factFetched(fact));
-    expect(dispatch).toHaveBeenCalledWith(setMessage(fact));
-    expect(dispatch).toHaveBeenCalledWith(appDoneLoading());
-    expect(dispatch).toHaveBeenCalledTimes(4);
+    expect(factFetched(fact).type).toEqual(ActionType.FACT_FETCHED);
+    expect(factFetched(fact).payload).toEqual(fact);
   });
 });
