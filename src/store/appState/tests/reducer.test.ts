@@ -9,7 +9,7 @@ import {
   ClearMessage,
   SetMessage,
   AppState,
-} from '../types';
+} from '../action-types';
 
 describe('#appStateReducer', () => {
   const initialState: AppState = {
