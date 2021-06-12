@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import { fetchFact } from '../store/factState/action-creator';
 
-export const Question: React.FC = (): ReactElement => {
+const Question: React.FC = (): ReactElement => {
   const dispatch = useDispatch();
   const [inputNumber, setInputNumber] = useState<number>(0);
 
@@ -38,3 +38,5 @@ export const Question: React.FC = (): ReactElement => {
     </Container>
   );
 };
+
+export default Question;

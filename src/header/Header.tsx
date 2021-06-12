@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 
 import { Navbar } from 'react-bootstrap';
 
-export const Header: React.FC = (): ReactElement => {
+const Header: React.FC = (): ReactElement => {
   return (
     <Navbar bg="light">
       <Navbar.Brand href="#home">
@@ -12,3 +12,5 @@ export const Header: React.FC = (): ReactElement => {
     </Navbar>
   );
 };
+
+export default Header;
